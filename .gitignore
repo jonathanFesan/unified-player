@@ -23,3 +23,6 @@ Thumbs.db
 *.log
 .vscode
 .idea
+
+# arquivos originais da logo (a versão otimizada fica em public/brand)
+Gemini_Generated_Image_*

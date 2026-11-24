@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="app/icon.svg" width="112" alt="Logo UPlayed" />
+  <img src="public/brand/uplayed-logo.jpg" width="280" alt="Logo UPlayed" />
 </p>
 
 <h1 align="center">UPlayed — Spotify + YouTube</h1>

@@ -33,7 +33,7 @@ export function Welcome() {
     <div className="mx-auto max-w-3xl animate-fade-in space-y-8 py-6 sm:py-12">
       <div className="space-y-4 text-center">
         <LogoMark className="mx-auto size-24 drop-shadow-[0_0_28px_rgb(121_231_126/0.35)] sm:size-28" />
-        <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Toda a sua música em <span className="text-brand-gradient">um só player</span>
         </h1>
         <p className="text-zinc-400">

@@ -5,16 +5,16 @@
       <stop offset="0.55" stop-color="#5ad67c"/>
       <stop offset="1" stop-color="#c7f8cd"/>
     </linearGradient>
-    <linearGradient id="l" x1="1" y1="21" x2="10" y2="38" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2fae63"/><stop offset="1" stop-color="#0d7445"/>
+    <linearGradient id="l" x1="0" y1="20" x2="0" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5cf27a"/><stop offset="1" stop-color="#0d6b45"/>
     </linearGradient>
-    <linearGradient id="d" x1="55" y1="21" x2="63" y2="38" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#8ef08f"/><stop offset="1" stop-color="#3cc06c"/>
+    <linearGradient id="d" x1="0" y1="20" x2="0" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5cf27a"/><stop offset="1" stop-color="#0d6b45"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="#0b1126"/>
   <g transform="translate(3.2 4.4) scale(0.9)">
-    <path d="M30 53 A17 17 0 0 1 13 36 V13.5 A4.5 4.5 0 0 1 22 13.5 V36 A14.5 14.5 0 0 0 51 36 V13.5 A4.5 4.5 0 0 0 42 13.5 V38 Q42 46 34.5 47.5" stroke="url(#r)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37 56.5 Q31 56.6 26.5 53.6 A17 17 0 0 1 13 36 V13.5 A4.5 4.5 0 0 1 22 13.5 V36 A14.5 14.5 0 0 0 51 36 V13.5 A4.5 4.5 0 0 0 42 13.5 V38 Q42 46 34.5 47.5" stroke="url(#r)" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M9.5 20.5 V37.5 A8.5 8.5 0 0 1 9.5 20.5 Z" fill="url(#l)"/>
     <path d="M54.5 20.5 V37.5 A8.5 8.5 0 0 0 54.5 20.5 Z" fill="url(#d)"/>
   </g>
