@@ -1,8 +1,9 @@
 "use client";
 
-import { ExternalLink, ListEnd, ListStart, Music, Play } from "lucide-react";
+import { ExternalLink, ListEnd, ListPlus, ListStart, Music, Play } from "lucide-react";
 import { SourceBadge } from "@/components/SourceBadge";
 import { usePlayerStore } from "@/lib/store/player-store";
+import { usePlaylistStore } from "@/lib/store/playlist-store";
 import { cn, formatTime } from "@/lib/utils";
 import type { Track } from "@/types";
 
@@ -34,7 +35,19 @@ function IconButton({ label, onClick, children }: { label: string; onClick: () =
   );
 }
 
-export function TrackRow({ track, index, onPlay }: { track: Track; index: number; onPlay?: () => void }) {
+export function TrackRow({
+  track,
+  index,
+  onPlay,
+  actions,
+}: {
+  track: Track;
+  index: number;
+  onPlay?: () => void;
+  /** Botões extras (ex.: reordenar/remover numa playlist local). */
+  actions?: React.ReactNode;
+}) {
+  const openPicker = usePlaylistStore((s) => s.openPicker);
   const playNow = usePlayerStore((s) => s.playNow);
   const play = onPlay ?? (() => playNow(track));
   const addToQueue = usePlayerStore((s) => s.addToQueue);
@@ -85,6 +98,9 @@ export function TrackRow({ track, index, onPlay }: { track: Track; index: number
         <IconButton label="Adicionar ao fim da fila" onClick={() => addToQueue(track)}>
           <ListEnd className="size-4" />
         </IconButton>
+        <IconButton label="Adicionar à playlist" onClick={() => openPicker([track])}>
+          <ListPlus className="size-4" />
+        </IconButton>
         {track.externalUrl && (
           <a
             href={track.externalUrl}
@@ -96,6 +112,7 @@ export function TrackRow({ track, index, onPlay }: { track: Track; index: number
             <ExternalLink className="size-4" />
           </a>
         )}
+        {actions}
       </div>
     </li>
   );

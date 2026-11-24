@@ -6,6 +6,15 @@
 
 Player de música web que busca no **Spotify** e no **YouTube** ao mesmo tempo e toca faixas das duas fontes numa **fila híbrida contínua**, com um único controlador na barra inferior.
 
+### Playlists próprias
+
+Crie playlists no UPlayed que **misturam faixas do Spotify e vídeos do YouTube**:
+
+- **Adicionar à playlist** (ícone de lista com +) em qualquer faixa da busca, da biblioteca do Spotify ou na barra do player.
+- **Salvar** no painel da fila transforma a fila atual numa playlist.
+- Na tela da playlist: tocar tudo, aleatório, adicionar à fila, reordenar, remover faixas, renomear e excluir.
+- As playlists ficam salvas **neste navegador** (`localStorage`), sem login nem permissões extras. Use **Exportar/Importar** (arquivo `.json`) para levá-las a outro navegador, a outro computador ou para o executável do Windows.
+
 **Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Zustand · Lucide React
 
 ---
@@ -93,6 +102,8 @@ components/
   TrackRow.tsx          Linha de resultado (tocar agora, tocar a seguir, adicionar à fila)
   YouTubeHost.tsx       Container do IFrame do YouTube (mini-player minimizável)
   SpotifyAccount.tsx    Login/logout e status Premium/SDK
+  LocalPlaylists.tsx    Seção "Suas playlists" e tela de cada playlist local
+  PlaylistPicker.tsx    Janela "Adicionar à playlist" (escolher ou criar)
   SourceBadge.tsx, Slider.tsx, StatusToast.tsx, Welcome.tsx, icons.tsx, Providers.tsx
 hooks/
   usePlayer.ts          Bootstrap do player, atalhos de teclado, Media Session API
@@ -110,6 +121,7 @@ lib/
   store/
     player-store.ts     Zustand: fila, índice, estado de reprodução, volume (persistido)
     auth-store.ts       Zustand: sessão e usuário do Spotify
+    playlist-store.ts   Zustand: playlists locais (persistidas), exportar/importar
 types/                  Tipos compartilhados (Track, QueueItem, ...)
 ```
 
@@ -136,7 +148,7 @@ Os componentes de UI só leem o store e chamam `playerActions`. Eles não sabem 
 
 - **Termos do YouTube:** o vídeo aparece num mini-player flutuante. O botão de minimizar só tira o player da tela, sem destruí-lo, para o áudio continuar. As políticas da YouTube API pedem que o player fique visível, então avalie isso antes de publicar o app.
 - **Fim de faixa no Spotify:** o SDK não emite um evento `ended`. O fim é detectado pelo `player_state_changed`, e o app pausa o "autoplay/rádio" do Spotify para seguir a fila daqui.
-- **Persistência:** a fila, o volume e o modo de repetição ficam salvos no `localStorage`. Os tokens do Spotify também ficam no `localStorage`, o que é aceitável para um app só de cliente com PKCE.
+- **Persistência:** a fila, o volume, o modo de repetição e as playlists próprias ficam salvos no `localStorage`. O executável do Windows usa um perfil do Edge separado, então as playlists do navegador não aparecem nele automaticamente: use Exportar/Importar. Os tokens do Spotify também ficam no `localStorage`, o que é aceitável para um app só de cliente com PKCE.
 - **Deploy (Vercel etc.):** defina as três variáveis no painel do provedor. Troque `NEXT_PUBLIC_SPOTIFY_REDIRECT_URI` para `https://SEU-DOMINIO.com/callback` e cadastre essa mesma URI no Spotify Dashboard.
 
 ## Scripts

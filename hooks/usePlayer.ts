@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { playerController } from "@/lib/player/controller";
 import { useAuthStore } from "@/lib/store/auth-store";
+import { usePlaylistStore } from "@/lib/store/playlist-store";
 import { selectCurrentTrack, usePlayerStore } from "@/lib/store/player-store";
 
 /** Comandos de transporte — expostos para qualquer componente. */
@@ -26,6 +27,7 @@ export function usePlayerBootstrap() {
 
   useEffect(() => {
     void usePlayerStore.persist.rehydrate();
+    void usePlaylistStore.persist.rehydrate();
     playerController.init();
     void useAuthStore.getState().init();
   }, []);

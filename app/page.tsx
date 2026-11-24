@@ -1,6 +1,8 @@
 "use client";
 
 import { Library } from "@/components/Library";
+import { LocalPlaylistView } from "@/components/LocalPlaylists";
+import { PlaylistPicker } from "@/components/PlaylistPicker";
 import { Logo } from "@/components/Logo";
 import { PlayerBar } from "@/components/PlayerBar";
 import { QueuePanel } from "@/components/QueuePanel";
@@ -12,11 +14,18 @@ import { Welcome } from "@/components/Welcome";
 import { YouTubeHost } from "@/components/YouTubeHost";
 import { useUnifiedSearch } from "@/hooks/useUnifiedSearch";
 import { useAuthStore } from "@/lib/store/auth-store";
+import { usePlaylistStore } from "@/lib/store/playlist-store";
 
 export default function Home() {
   const { query, spotify, youtube, search } = useUnifiedSearch();
   const loggedIn = useAuthStore((s) => s.status === "authenticated");
   const loading = spotify.status === "loading" || youtube.status === "loading";
+  const openPlaylistId = usePlaylistStore((s) => s.openId);
+
+  const goHome = () => {
+    usePlaylistStore.getState().open(null);
+    search("");
+  };
 
   return (
     <div className="min-h-dvh pb-28 md:pb-32">
@@ -24,7 +33,7 @@ export default function Home() {
         <div className="mx-auto flex h-16 max-w-[1600px] items-center gap-3 px-3 sm:px-6">
           <button
             type="button"
-            onClick={() => search("")}
+            onClick={goHome}
             className="shrink-0 rounded-xl transition hover:opacity-90"
             aria-label="UPlayed — início"
           >
@@ -39,7 +48,11 @@ export default function Home() {
 
       <div className="mx-auto grid max-w-[1600px] gap-6 px-3 pt-6 sm:px-6 xl:grid-cols-[minmax(0,1fr)_20rem]">
         <main className="min-w-0">
-          {query ? <SearchResults query={query} spotify={spotify} youtube={youtube} /> : loggedIn ? (
+          {query ? (
+            <SearchResults query={query} spotify={spotify} youtube={youtube} />
+          ) : openPlaylistId ? (
+            <LocalPlaylistView key={openPlaylistId} id={openPlaylistId} />
+          ) : loggedIn ? (
             <Library />
           ) : (
             <Welcome />
@@ -49,6 +62,7 @@ export default function Home() {
       </div>
 
       <YouTubeHost />
+      <PlaylistPicker />
       <StatusToast />
       <PlayerBar />
     </div>

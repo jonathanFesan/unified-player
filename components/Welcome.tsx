@@ -1,7 +1,8 @@
 "use client";
 
-import { CheckCircle2, Circle, Layers, Search, Shuffle } from "lucide-react";
+import { CheckCircle2, Circle, Layers, ListMusic, Search, Shuffle } from "lucide-react";
 import { SpotifyIcon, YouTubeIcon } from "@/components/icons";
+import { LocalPlaylistsSection } from "@/components/LocalPlaylists";
 import { LogoMark } from "@/components/Logo";
 import { isSpotifyConfigured, isYouTubeConfigured } from "@/lib/env";
 import { useAuthStore } from "@/lib/store/auth-store";
@@ -26,6 +27,7 @@ export function Welcome() {
   const features = [
     { Icon: Search, title: "Busca unificada", text: "Um campo, dois catálogos. Resultados lado a lado." },
     { Icon: Layers, title: "Fila híbrida", text: "Misture faixas do Spotify e vídeos do YouTube." },
+    { Icon: ListMusic, title: "Playlists próprias", text: "Crie playlists que misturam as duas plataformas." },
     { Icon: Shuffle, title: "Troca automática", text: "O player alterna entre o SDK do Spotify e o IFrame do YouTube." },
   ];
 
@@ -49,7 +51,7 @@ export function Welcome() {
         </div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {features.map(({ Icon, title, text }) => (
           <div key={title} className="glass rounded-2xl p-4">
             <Icon className="mb-2 size-5 text-brand-300" />
@@ -58,6 +60,8 @@ export function Welcome() {
           </div>
         ))}
       </div>
+
+      <LocalPlaylistsSection />
 
       <div className="glass rounded-2xl p-5">
         <p className="mb-3 text-sm font-semibold">Status da configuração</p>

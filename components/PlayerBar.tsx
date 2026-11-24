@@ -2,6 +2,7 @@
 
 import {
   ListMusic,
+  ListPlus,
   Loader2,
   MonitorPlay,
   Pause,
@@ -19,6 +20,7 @@ import { SourceBadge } from "@/components/SourceBadge";
 import { Artwork } from "@/components/TrackRow";
 import { playerActions } from "@/hooks/usePlayer";
 import { selectCurrentTrack, usePlayerStore } from "@/lib/store/player-store";
+import { usePlaylistStore } from "@/lib/store/playlist-store";
 import { cn, formatTime } from "@/lib/utils";
 import type { EngineKind } from "@/types";
 
@@ -164,6 +166,17 @@ export function PlayerBar() {
               <p className="hidden truncate text-[10px] text-zinc-500 md:block">via {ENGINE_LABEL[engine]}</p>
             )}
           </div>
+          {track && (
+            <button
+              type="button"
+              title="Adicionar à playlist"
+              aria-label="Adicionar a faixa atual a uma playlist"
+              onClick={() => usePlaylistStore.getState().openPicker([track])}
+              className="hidden size-8 shrink-0 place-items-center rounded-full text-zinc-400 transition hover:bg-white/10 hover:text-brand-300 sm:grid"
+            >
+              <ListPlus className="size-4" />
+            </button>
+          )}
         </div>
 
         {/* Controles */}

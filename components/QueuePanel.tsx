@@ -1,9 +1,10 @@
 "use client";
 
-import { ChevronDown, ChevronUp, ListMusic, Trash2, X } from "lucide-react";
+import { ChevronDown, ChevronUp, ListMusic, ListPlus, Trash2, X } from "lucide-react";
 import { SourceBadge } from "@/components/SourceBadge";
 import { Artwork } from "@/components/TrackRow";
 import { usePlayerStore } from "@/lib/store/player-store";
+import { usePlaylistStore } from "@/lib/store/playlist-store";
 import { cn, formatTime } from "@/lib/utils";
 
 function Equalizer({ paused }: { paused: boolean }) {
@@ -58,6 +59,20 @@ export function QueuePanel() {
             {queue.length} {queue.length === 1 ? "faixa" : "faixas"}
           </span>
           <div className="ml-auto flex items-center gap-1">
+            {queue.length > 0 && (
+              <button
+                type="button"
+                title="Salvar a fila como playlist"
+                onClick={() =>
+                  usePlaylistStore
+                    .getState()
+                    .openPicker(queue, `Fila de ${new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })}`)
+                }
+                className="flex items-center gap-1 rounded-full px-2 py-1 text-xs text-zinc-400 hover:bg-white/10 hover:text-white"
+              >
+                <ListPlus className="size-3.5" /> Salvar
+              </button>
+            )}
             {queue.length > 0 && (
               <button
                 type="button"

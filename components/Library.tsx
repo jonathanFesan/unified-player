@@ -2,10 +2,12 @@
 
 import { AlertCircle, ArrowLeft, ExternalLink, Heart, ListEnd, ListMusic, Loader2, Play, RefreshCw, Shuffle } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { LocalPlaylistsSection } from "@/components/LocalPlaylists";
 import { Artwork, TrackRow } from "@/components/TrackRow";
 import { getMyPlaylists, getPlaylistTracks, getSavedTracks, SpotifyApiError, type SpotifyPlaylistSummary } from "@/lib/spotify/api";
 import { useAuthStore } from "@/lib/store/auth-store";
 import { usePlayerStore } from "@/lib/store/player-store";
+import { shuffled } from "@/lib/utils";
 import type { Track } from "@/types";
 
 const LIKED_ID = "__liked__";
@@ -67,15 +69,6 @@ function ErrorBox({ message }: { message: string }) {
       <p>{message}</p>
     </div>
   );
-}
-
-function shuffled<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
 }
 
 function TrackList({ selected, onBack }: { selected: Selected; onBack: () => void }) {
@@ -146,7 +139,7 @@ function TrackList({ selected, onBack }: { selected: Selected; onBack: () => voi
               onClick={() => playAll(tracks)}
               className="flex items-center gap-2 rounded-full btn-brand px-5 py-2 text-sm font-bold transition hover:scale-[1.03] hover:brightness-110 disabled:opacity-40 disabled:hover:scale-100"
             >
-              <Play className="size-4 fill-black" /> Tocar tudo
+              <Play className="size-4 fill-current" /> Tocar tudo
             </button>
             <button
               type="button"
@@ -281,9 +274,10 @@ export function Library() {
 
   return (
     <div ref={topRef} className="animate-fade-in space-y-4">
-      <div className="flex items-center justify-between gap-3">
-        <h1 className="flex items-center gap-2 text-lg font-semibold">
-          <ListMusic className="size-5 text-brand-300" /> Sua biblioteca
+      <LocalPlaylistsSection />
+      <div className="flex items-center justify-between gap-3 pt-4">
+        <h1 className="font-display flex items-center gap-2 text-lg font-semibold">
+          <ListMusic className="size-5 text-spotify" /> Sua biblioteca do Spotify
         </h1>
         <button
           type="button"
