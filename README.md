@@ -1,4 +1,8 @@
-# Unified Player — Spotify + YouTube
+<p align="center">
+  <img src="app/icon.svg" width="112" alt="Logo UPlayed" />
+</p>
+
+<h1 align="center">UPlayed — Spotify + YouTube</h1>
 
 Player de música web que busca no **Spotify** e no **YouTube** ao mesmo tempo e toca faixas das duas fontes numa **fila híbrida contínua**, com um único controlador na barra inferior.
 
@@ -45,7 +49,7 @@ Se você abrir `localhost:3000`, o app redireciona sozinho para `127.0.0.1:3000`
 
 | Conta | Como as faixas do Spotify tocam |
 |---|---|
-| **Premium** | Faixa completa via **Web Playback SDK**. O navegador vira um dispositivo Spotify Connect chamado "Unified Player (Web)". |
+| **Premium** | Faixa completa via **Web Playback SDK**. O navegador vira um dispositivo Spotify Connect chamado "UPlayed (Web)". |
 | **Free** ou sem login | **Prévia de 30s** quando o Spotify fornece `preview_url`. Quando não fornece, o app busca a mesma música no YouTube e toca essa versão, avisando na tela. |
 
 > O Spotify deixou de fornecer `preview_url` para apps criados depois de nov/2024. Na prática, contas Free quase sempre caem no fallback do YouTube.

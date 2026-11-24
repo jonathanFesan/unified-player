@@ -35,7 +35,7 @@ function CallbackHandler() {
       <div className="glass max-w-md space-y-4 rounded-2xl p-6 text-center">
         <AlertTriangle className="mx-auto size-8 text-amber-400" />
         <p className="text-sm text-zinc-300">{error}</p>
-        <Link href="/" className="inline-block rounded-full bg-white px-4 py-2 text-sm font-semibold text-black">
+        <Link href="/" className="inline-block rounded-full btn-brand px-4 py-2 text-sm font-bold">
           Voltar
         </Link>
       </div>

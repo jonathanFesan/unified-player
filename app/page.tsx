@@ -1,7 +1,7 @@
 "use client";
 
-import { Disc3 } from "lucide-react";
 import { Library } from "@/components/Library";
+import { Logo } from "@/components/Logo";
 import { PlayerBar } from "@/components/PlayerBar";
 import { QueuePanel } from "@/components/QueuePanel";
 import { SearchBar } from "@/components/SearchBar";
@@ -25,15 +25,12 @@ export default function Home() {
           <button
             type="button"
             onClick={() => search("")}
-            className="flex shrink-0 items-center gap-2 font-bold tracking-tight"
-            aria-label="Início"
+            className="shrink-0 rounded-xl transition hover:opacity-90"
+            aria-label="UPlayed — início"
           >
-            <Disc3 className="size-7 text-spotify" />
-            <span className="hidden sm:inline">
-              Unified<span className="text-zinc-500">Player</span>
-            </span>
+            <Logo className="[&>span:last-child]:hidden sm:[&>span:last-child]:inline" />
           </button>
-          <div className="mx-auto w-full max-w-2xl">
+          <div className="mx-auto w-full min-w-0 max-w-2xl">
             <SearchBar onSearch={search} loading={loading} />
           </div>
           <SpotifyAccount />

@@ -65,7 +65,7 @@ export class SpotifyEngine implements PlaybackEngine {
     this.ready = new Promise<string>((resolve, reject) => {
       const setup = () => {
         const player = new Spotify.Player({
-          name: "Unified Player (Web)",
+          name: "UPlayed (Web)",
           volume: this.volume,
           getOAuthToken: (cb) => {
             getSpotifyAccessToken().then((token) => token && cb(token));

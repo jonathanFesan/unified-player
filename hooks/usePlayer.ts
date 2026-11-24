@@ -82,6 +82,6 @@ export function usePlayerBootstrap() {
 
   // Título da aba
   useEffect(() => {
-    document.title = current ? `${isPlaying ? "▶ " : ""}${current.title} · ${current.artist}` : "Unified Player";
+    document.title = current ? `${isPlaying ? "▶ " : ""}${current.title} · ${current.artist}` : "UPlayed";
   }, [current, isPlaying]);
 }

@@ -51,7 +51,7 @@ function ScopeNotice() {
       <button
         type="button"
         onClick={() => void login()}
-        className="flex items-center gap-2 rounded-full bg-spotify px-4 py-2 font-semibold text-black transition hover:bg-spotify/90"
+        className="flex items-center gap-2 rounded-full btn-brand px-4 py-2 font-bold transition hover:brightness-110"
       >
         <RefreshCw className="size-4" /> Reconectar
       </button>
@@ -125,8 +125,8 @@ function TrackList({ selected, onBack }: { selected: Selected; onBack: () => voi
 
       <header className="flex flex-col gap-4 sm:flex-row sm:items-end">
         {selected.id === LIKED_ID ? (
-          <div className="grid size-32 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-indigo-500 to-spotify">
-            <Heart className="size-12 fill-white text-white" />
+          <div className="grid size-32 shrink-0 place-items-center rounded-2xl bg-brand-gradient text-surface">
+            <Heart className="size-12 fill-surface text-surface" />
           </div>
         ) : (
           <Artwork src={selected.image} className="size-32 shrink-0 rounded-2xl" />
@@ -144,7 +144,7 @@ function TrackList({ selected, onBack }: { selected: Selected; onBack: () => voi
               type="button"
               disabled={!ready}
               onClick={() => playAll(tracks)}
-              className="flex items-center gap-2 rounded-full bg-spotify px-5 py-2 text-sm font-semibold text-black transition hover:scale-[1.03] hover:bg-spotify/90 disabled:opacity-40 disabled:hover:scale-100"
+              className="flex items-center gap-2 rounded-full btn-brand px-5 py-2 text-sm font-bold transition hover:scale-[1.03] hover:brightness-110 disabled:opacity-40 disabled:hover:scale-100"
             >
               <Play className="size-4 fill-black" /> Tocar tudo
             </button>
@@ -232,8 +232,8 @@ function PlaylistCard({
       className="group min-w-0 rounded-2xl p-2 text-left transition hover:bg-white/[0.06] focus-visible:outline-2 focus-visible:outline-white/50"
     >
       {liked ? (
-        <div className="grid aspect-square w-full place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-spotify">
-          <Heart className="size-1/3 fill-white text-white" />
+        <div className="grid aspect-square w-full place-items-center rounded-xl bg-brand-gradient text-surface">
+          <Heart className="size-1/3 fill-surface text-surface" />
         </div>
       ) : (
         <Artwork src={image} className="aspect-square w-full rounded-xl" />
@@ -283,7 +283,7 @@ export function Library() {
     <div ref={topRef} className="animate-fade-in space-y-4">
       <div className="flex items-center justify-between gap-3">
         <h1 className="flex items-center gap-2 text-lg font-semibold">
-          <ListMusic className="size-5 text-spotify" /> Sua biblioteca
+          <ListMusic className="size-5 text-brand-300" /> Sua biblioteca
         </h1>
         <button
           type="button"

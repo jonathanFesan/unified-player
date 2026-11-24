@@ -102,7 +102,7 @@ export function SearchResults({ query, spotify, youtube }: Props) {
               onClick={() => setTab(t.id)}
               className={cn(
                 "flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-medium transition",
-                tab === t.id ? "bg-white text-black" : "text-zinc-400 hover:text-white",
+                tab === t.id ? "btn-brand font-bold" : "text-zinc-400 hover:text-white",
               )}
             >
               {t.dot && <span className={cn("size-1.5 rounded-full", t.dot)} />}

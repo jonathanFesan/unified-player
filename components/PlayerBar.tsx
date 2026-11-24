@@ -53,7 +53,7 @@ function CtrlButton({
       onClick={onClick}
       className={cn(
         "relative grid size-9 place-items-center rounded-full transition hover:text-white disabled:opacity-30 disabled:hover:text-zinc-400",
-        active ? "text-spotify" : "text-zinc-400",
+        active ? "text-brand-300" : "text-zinc-400",
         className,
       )}
     >
@@ -185,7 +185,7 @@ export function PlayerBar() {
               aria-label={isPlaying ? "Pausar" : "Tocar"}
               onClick={playerActions.togglePlay}
               disabled={!queueLength}
-              className="grid size-11 place-items-center rounded-full bg-white text-black shadow-lg shadow-black/30 transition hover:scale-105 active:scale-95 disabled:opacity-40 disabled:hover:scale-100 md:size-10"
+              className="grid size-11 place-items-center rounded-full btn-brand transition hover:scale-105 hover:brightness-110 active:scale-95 disabled:opacity-40 disabled:hover:scale-100 md:size-10"
             >
               <PlayIcon
                 className={cn("size-5", PlayIcon === Loader2 ? "animate-spin" : "fill-current", PlayIcon === Play && "ml-0.5")}

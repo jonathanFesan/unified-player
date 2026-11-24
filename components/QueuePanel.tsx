@@ -8,7 +8,7 @@ import { cn, formatTime } from "@/lib/utils";
 
 function Equalizer({ paused }: { paused: boolean }) {
   return (
-    <span className={cn("eq flex h-4 items-end text-spotify", paused && "paused")} aria-hidden>
+    <span className={cn("eq flex h-4 items-end text-brand-300", paused && "paused")} aria-hidden>
       <span />
       <span />
       <span />
@@ -106,7 +106,7 @@ export function QueuePanel() {
                   key={t.queueId}
                   className={cn(
                     "group flex items-center gap-2.5 rounded-xl p-1.5 pr-1 transition",
-                    isCurrent ? "bg-white/[0.08]" : "hover:bg-white/[0.05]",
+                    isCurrent ? "bg-brand-300/[0.09] ring-1 ring-brand-300/15" : "hover:bg-white/[0.05]",
                     isPast && "opacity-50",
                   )}
                 >
@@ -125,7 +125,7 @@ export function QueuePanel() {
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className={cn("truncate text-[13px] font-medium", isCurrent && "text-spotify")}>{t.title}</p>
+                      <p className={cn("truncate text-[13px] font-medium", isCurrent && "text-brand-300")}>{t.title}</p>
                       <p className="flex items-center gap-1 truncate text-xs text-zinc-400">
                         <SourceBadge source={t.source} compact />
                         <span className="truncate">{t.artist}</span>

@@ -1,4 +1,4 @@
-// Launcher do Unified Player para Windows.
+// Launcher do UPlayed para Windows.
 // Sobe o servidor Next.js (node.exe + server.js empacotados ao lado) em 127.0.0.1:3000
 // e abre o app numa janela própria do Microsoft Edge (modo --app, com Widevine para o Spotify).
 // Ao fechar a janela, o servidor é encerrado.
@@ -55,7 +55,7 @@ static class Launcher
         {
             // Sem Edge: abre no navegador padrão e mantém o servidor até o usuário confirmar.
             Process.Start(Url);
-            MessageBox.Show("Unified Player rodando em " + Url + "\n\nClique OK para encerrar.", "Unified Player");
+            MessageBox.Show("UPlayed rodando em " + Url + "\n\nClique OK para encerrar.", "UPlayed");
             Kill(serverProc);
             return 0;
         }
@@ -115,6 +115,6 @@ static class Launcher
 
     static void Fail(string msg)
     {
-        MessageBox.Show(msg, "Unified Player", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        MessageBox.Show(msg, "UPlayed", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 }

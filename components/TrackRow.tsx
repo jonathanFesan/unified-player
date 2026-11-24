@@ -62,7 +62,7 @@ export function TrackRow({ track, index, onPlay }: { track: Track; index: number
       </button>
 
       <button type="button" onClick={play} className="min-w-0 flex-1 text-left">
-        <p className={cn("truncate text-sm font-medium", isCurrent ? "text-spotify" : "text-zinc-100")}>
+        <p className={cn("truncate text-sm font-medium", isCurrent ? "text-brand-300" : "text-zinc-100")}>
           {track.title}
         </p>
         <p className="flex items-center gap-1.5 truncate text-xs text-zinc-400">

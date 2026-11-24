@@ -49,7 +49,7 @@ export function SearchBar({ onSearch, loading }: Props) {
         placeholder="Buscar músicas ou artistas no Spotify e YouTube…"
         aria-label="Buscar músicas ou artistas"
         enterKeyHint="search"
-        className="h-11 w-full rounded-full border border-white/10 bg-white/[0.06] pr-24 pl-11 text-sm text-white placeholder:text-zinc-500 transition outline-none focus:border-white/25 focus:bg-white/[0.09] [&::-webkit-search-cancel-button]:hidden"
+        className="h-11 w-full rounded-full border border-white/10 bg-white/[0.06] pr-24 pl-11 text-sm text-white placeholder:text-zinc-500 transition outline-none focus:border-brand-300/50 focus:bg-white/[0.09] focus:ring-4 focus:ring-brand-300/10 [&::-webkit-search-cancel-button]:hidden"
       />
       <div className="absolute top-1/2 right-1.5 flex -translate-y-1/2 items-center gap-1">
         {loading && <Loader2 className="size-4 animate-spin text-zinc-400" />}
