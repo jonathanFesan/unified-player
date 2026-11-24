@@ -1,0 +1,25 @@
+# dependências
+node_modules
+
+# build (o build do Next embute as variáveis NEXT_PUBLIC_* no JavaScript)
+.next
+out
+dist
+*.tsbuildinfo
+next-env.d.ts
+
+# variáveis de ambiente: nunca versionar chaves reais
+.env
+.env.*
+!.env.example
+
+# capturas de tela locais
+Captura de tela*.png
+Screenshot*.png
+
+# sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode
+.idea
